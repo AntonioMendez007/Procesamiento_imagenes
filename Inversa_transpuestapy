@@ -1,0 +1,22 @@
+import cv2
+from matplotlib import pyplot as plt
+
+imagen = cv2.imread('pollo.jpg')
+imagen_chica=cv2.resize(imagen,(350,240),interpolation=cv2.INTER_CUBIC)
+cv2.imshow('color', imagen_chica)
+
+#Gris
+img_gris = cv2.cvtColor(imagen_chica, cv2.COLOR_BGR2GRAY)
+cv2.imshow('Gris', img_gris)
+
+#Inversa
+#img = cv2.imread("pollo.jpg", 0)
+#imagen_chica=cv2.resize(imagen,(350,240),interpolation=cv2.INTER_CUBIC)
+inverted_image = cv2.bitwise_not(img_gris)
+cv2.imshow("Imagen invertida",inverted_image)
+
+# transpuesta
+image = cv2.transpose(img_gris)
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.title("Transpuesta")
+plt.show()
